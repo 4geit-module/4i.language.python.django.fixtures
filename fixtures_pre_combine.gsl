@@ -27,4 +27,18 @@ new project.code as c
 "
 endnew c
 
+new project.dir as d
+  define d.name = parentnode.name
+  new d.dir as d
+    define d.name = 'management'
+    new d.dir as d
+      define d.name = 'commands'
+      new d.output as o
+        define o.name = '$(parentnode.name)_fixtures'
+        gsl from 'app/management/commands/fixtures__py.gsl'
+      endnew o
+    endnew d
+  endnew d
+endnew d
+
 .endtemplate

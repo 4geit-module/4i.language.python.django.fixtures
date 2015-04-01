@@ -1,0 +1,79 @@
+.template 0
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License version 3
+# as published by the Free Software Foundation.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+#
+# Authors:
+# Caner Candan <caner@candan.fr>, http://caner.candan.fr
+#
+
+new o.stmt as s
+  define s. = "from django.conf import settings"
+endnew s
+new o.stmt as s
+  define s. = "from django.utils.translation import ugettext_lazy as _"
+endnew s
+new o.stmt as s
+  define s. = "from django.utils import translation"
+endnew s
+new o.stmt as s
+  define s. = "from django.utils.text import slugify"
+endnew s
+new o.stmt as s
+  define s. = "from django.core.management.base import BaseCommand, CommandError, NoArgsCommand"
+endnew s
+new o.stmt as s
+  define s. = "from optparse import make_option"
+endnew s
+new o.stmt as s
+  define s. = "import sys, logging, logging.config"
+endnew s
+new o.stmt as s
+  define s. = "from pprint import pprint"
+endnew s
+new o.stmt as s
+  define s. = "from ... import models"
+endnew s
+new o.newline as nl
+endnew nl
+
+new o.class as c
+  define c.name = "Command"
+  define c.inherits = "NoArgsCommand"
+  new c.stmt as s
+    define s. = "help = \"Add fixtures for app '$(parentnode.name)'\""
+  endnew s
+  new c.stmt as s
+    define s. = "option_list = BaseCommand.option_list + ("
+  endnew s
+  new c.stmt as s
+    define s. = ")"
+  endnew s
+  new c.def as d
+    define d.name = "handle_noargs"
+    new d.arg as a
+      define a.name = "self"
+    endnew a
+    new d.arg as a
+      define a.name = "**options"
+    endnew a
+    new d.stmt as s
+      define s. = "logger = logging.getLogger('fixtures')"
+    endnew s
+    new d.stmt as s
+      define s. = "logger.info('add fixtures to app \"$(parentnode.name)\"')"
+    endnew s
+  endnew d
+endnew c
+
+.endtemplate
