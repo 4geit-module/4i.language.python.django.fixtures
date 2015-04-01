@@ -47,6 +47,16 @@ endnew s
 new o.newline as nl
 endnew nl
 
+function actions_scope(xmlroot)
+  my.xmlroot ?= projectnode
+  # for my.xmlroot.group as g
+  #   actions_scope(g)
+  # endfor
+  for my.xmlroot. as a where name() <> "group"
+    gsl from 'actions/$(name(a):).gsl'
+  endfor a
+endfunction actions_scope
+
 new o.class as c
   define c.name = "Command"
   define c.inherits = "NoArgsCommand"
@@ -73,6 +83,8 @@ new o.class as c
     new d.stmt as s
       define s. = "logger.info('add fixtures to app \"$(parentnode.name)\"')"
     endnew s
+
+    actions_scope()
   endnew d
 endnew c
 
