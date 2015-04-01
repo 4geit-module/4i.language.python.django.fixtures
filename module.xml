@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<module name="4i.language.python.django.fixtures" branch="master">
+  <module name="4i.language.python.django" required_branch="master"/>
+
+  <node name="project">
+    <node name="app" number="*">
+      <node name="fixtures" pre_combine="fixtures_pre_combine.gsl">
+	<group name="actions">
+	  <node name="add" number="*">
+	    <attribute name="ref" required="True"/>
+	    <attribute name="newitem" required="True"/>
+	  </node> <!-- !add -->
+	  <node name="all" number="*">
+	    <attribute name="id" required="True"/>
+	    <attribute name="ref"/>
+	    <attribute name="model"/>
+	    <node name="filter" number="*">
+	      <attribute name="value" required="True"/>
+	    </node> <!-- !filter -->
+	    <node name="exclude" number="*">
+	      <attribute name="value" required="True"/>
+	    </node> <!-- !exclude -->
+	    <node name="order_by" number="*">
+	      <attribute name="value" required="True"/>
+	    </node> <!-- !order_by -->
+	  </node> <!-- !all -->
+	  <node name="break" number="*"/>
+	  <node name="create" number="*">
+	    <attribute name="id" required="True"/>
+	    <attribute name="model" required="True"/>
+	    <node name="field" number="*">
+	      <attribute name="name" required="True"/>
+	      <attribute name="ref" required="True"/>
+	    </node> <!-- !field -->
+	  </node> <!-- !create -->
+	  <node name="delete" number="*">
+	    <attribute name="ref" required="True"/>
+	  </node> <!-- !delete -->
+	  <node name="dict_value_search" number="*">
+	    <attribute name="id" required="True"/>
+	    <attribute name="dict" required="True"/>
+	    <attribute name="search" required="True"/>
+	  </node> <!-- !dict_value_search -->
+	  <node name="for" number="*">
+	    <attribute name="each" required="True"/>
+	    <attribute name="in" required="True"/>
+	    <!-- <group ref="::actions"/> -->
+	  </node> <!-- !for -->
+	  <node name="get" number="*">
+	    <attribute name="id" required="True"/>
+	    <attribute name="model" required="True"/>
+	    <attribute name="value" required="True"/>
+	    <node name="found">
+	      <!-- <group ref=":::actions"/> -->
+	    </node> <!-- !found -->
+	    <node name="notfound">
+	      <!-- <group ref=":::actions"/> -->
+	    </node> <!-- !notfound -->
+	  </node> <!-- !get -->
+	  <node name="get_or_create" number="*">
+	    <attribute name="id" required="True"/>
+	    <attribute name="model"/>
+	    <attribute name="ref"/>
+	    <node name="field" number="*">
+	      <attribute name="name" required="True"/>
+	      <attribute name="unique"/>
+	      <attribute name="ref"/>
+	    </node> <!-- !field -->
+	  </node> <!-- !get_or_create -->
+	  <node name="update" number="*">
+	    <attribute name="id" required="True"/>
+	    <attribute name="model"/>
+	    <attribute name="ref"/>
+	    <node name="field" number="*">
+	      <attribute name="name" required="True"/>
+	      <attribute name="ref"/>
+	    </node> <!-- !field -->
+	  </node> <!-- !update -->
+	  <node name="update_or_create" number="*">
+	    <attribute name="id" required="True"/>
+	    <attribute name="model"/>
+	    <attribute name="ref"/>
+	    <node name="field" number="*">
+	      <attribute name="name" required="True"/>
+	      <attribute name="unique"/>
+	      <attribute name="ref"/>
+	    </node> <!-- !field -->
+	  </node> <!-- !update_or_create -->
+	  <node name="print" number="*">
+	    <attribute name="ref" required="True"/>
+	  </node> <!-- !print -->
+	</group> <!-- !actions -->
+      </node> <!-- !fixtures -->
+    </node> <!-- !app -->
+  </node> <!-- !project -->
+</module>
